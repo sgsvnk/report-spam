@@ -3,14 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
+  <title>Report Spam</title>
+  <meta name="description" content="Creates the template to raise a complaint for spam calling against DND">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+  <meta property="og:title" content="Report Spam">
+  <meta property="og:type" content="app">
+  <meta property="og:url" content="https://sgsvnk.github.io/report-spam/">
+  <meta property="og:image" content="https://sgsvnk.github.io/report-spam/img/logo.png">
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
@@ -23,19 +23,73 @@
 </head>
 
 <body>
+<div class="main-container">
+  <h1 id="heading">Report Spam</h1>
+  <hr />
+  <form id="spam-report-form" class="form-container">
+    <div class="form-row">
+      <label for="spamNumber">Enter the spam number</label>
+      <input type="number" id="spamNumber" name="spam-number" placeholder="Enter the spam number"
+             minlength="10" autocomplete="off" required />
+    </div>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+    <div class="form-row">
+      <label for="complaintMessage">Enter the complaint message</label>
+      <input type="text" id="complaintMessage" name="complaint-message"
+             minlength="10" placeholder="Enter the complaint message" autocomplete="off" required />
+    </div>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+    <div class="form-row">
+      <button type="submit" name="submit" id="submitButton">Initiate Spam Report &rarr;</button>
+    </div>
+  </form>
+
+  <footer class="app-footer">
+    Use this often? ❤️ <br />
+    <a class="footer-link" href="https://www.howtogeek.com/196087/how-to-add-websites-to-the-home-screen-on-any-smartphone-or-tablet/">Click to find how you can add this to your homescreen.</a>
+  </footer>
+</div>
+<script>
+  function getDate() {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+
+    return dd + '/' + mm + '/' + yyyy;
+  }
+
+  function cleanSpamNumber(number) {
+    if (number.startsWith('+91')) {
+      return number.slice(3);
+    }
+  }
+
+  document.getElementById("spam-report-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const spamNumber = cleanSpamNumber(event.target["spamNumber"].value);
+    const complaintMessage = event.target["complaintMessage"].value;
+    const reportingNumber = '1909';
+    const messageBody = `${complaintMessage}, ${spamNumber}, ${getDate()}`
+
+    if (navigator.userAgent.match(/Android/i)) {
+      window.open(`sms://${reportingNumber}/?body=${messageBody}`, "_blank");
+    } else if (navigator.userAgent.match(/iPhone/i)) {
+      window.open(`sms://${reportingNumber}/&body=${messageBody}`, "_blank");
+    }
+  });
+</script>
+
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+  ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>

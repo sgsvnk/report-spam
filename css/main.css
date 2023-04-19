@@ -261,3 +261,104 @@ textarea {
   }
 }
 
+body {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+  max-width: 100%;
+  padding: 20px 20px 8px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  height: 100vh;
+}
+
+.main-container {
+  padding: 10px;
+}
+
+#heading {
+  padding: 30px 0;
+  text-align: center;
+  margin: 0 0 28px;
+}
+
+hr {
+  color: #DADFE1;
+  border: none;
+  border-top: 1px solid #DADFE1;
+}
+
+.form-container {
+  margin: 100px 0;
+}
+
+.form-row {
+  margin: 30px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-row:last-child {
+  margin-top: 60px;
+}
+
+label {
+  display: none;
+}
+
+#spamNumber, #complaintMessage {
+  width: 80%;
+  border: 1px solid #BDC3C7;
+  border-radius: 4px;
+  height: 46px;
+  display: inline-block;
+  font-size: 17px;
+  padding: 5px 15px;
+}
+
+#select-country {
+  background-color: rgba(243, 243, 243, 0.6);
+}
+
+#submitButton {
+  display: inline-block;
+  width: 90%;
+  height: 92px;
+  border: none;
+  font-size: 17px;
+  border-radius: 4px;
+  padding: 0 10px;
+  background: #03A678;
+  color: #fff;
+  box-shadow: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+#submitButton:disabled {
+  background: rgb(3, 166, 120, 0.6);
+}
+
+.app-footer {
+  padding: 12px 0 0;
+  border-top: 1px solid #DADFE1;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-size: 12px;
+  color: #777;
+  line-height: 20px;
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 60px);
+}
+
+a.footer-link {
+  color: #777;
+  border-bottom: 1px dashed #777;
+  text-decoration: none;
+}
+
