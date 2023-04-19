@@ -29,8 +29,8 @@
   <form id="spam-report-form" class="form-container">
     <div class="form-row">
       <label for="spamNumber">Enter the spam number</label>
-      <input type="number" id="spamNumber" name="spam-number" placeholder="Enter the spam number"
-             minlength="10" autocomplete="off" required />
+      <input type="text" id="spamNumber" name="spam-number" placeholder="Enter the spam number"
+             minlength="10" maxlength="13" autocomplete="off" required />
     </div>
 
     <div class="form-row">
@@ -63,6 +63,8 @@
     if (number.startsWith('+91')) {
       return number.slice(3);
     }
+
+    return number;
   }
 
   document.getElementById("spam-report-form").addEventListener("submit", function(event) {
