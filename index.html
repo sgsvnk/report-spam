@@ -30,7 +30,7 @@
     <div class="form-row">
       <label for="spamNumber">Enter the spam number</label>
       <input type="text" id="spamNumber" name="spam-number" placeholder="Enter the spam number"
-             minlength="10" maxlength="13" autocomplete="off" required />
+             minlength="10" maxlength="15" autocomplete="off" required />
     </div>
 
     <div class="form-row">
@@ -60,6 +60,7 @@
   }
 
   function cleanSpamNumber(number) {
+    number = number.replace(/\s/g, '');
     if (number.startsWith('+91')) {
       return number.slice(3);
     }
